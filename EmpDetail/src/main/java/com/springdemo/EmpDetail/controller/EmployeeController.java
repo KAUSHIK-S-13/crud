@@ -28,16 +28,32 @@ public class EmployeeController {
         return "New employee Added";
 
     }
-    @GetMapping("/{id}")
-    public ResponseEntity<Employee> get(@PathVariable Integer id) {
-        try {
-            Employee employee = employeeService.get(id);
-            return new ResponseEntity<Employee>(employee, HttpStatus.OK);
 
-        } catch (NoSuchElementException e) {
+    @GetMapping("/{id}")
+    public Employee findEmployeeById(@PathVariable int id) {
+        return employeeService.getEmployeeById(id);
+    }
+
+    @DeleteMapping("/delete/{id}")
+    public String deleteEmplopyee(@PathVariable int id) {
+        return employeeService.deleteEmplopyee(id);
+    }
+
+    @PutMapping("/update/{id}")
+    public ResponseEntity<Employee> update(@RequestBody Employee employee, @PathVariable Integer id){
+        try{
+            Employee existingEmployee=employeeService.getEmployeeById(id);
+            employeeService.save(employee);
+            return new ResponseEntity<>(HttpStatus.OK);
+
+        }catch (NoSuchElementException e){
             return new ResponseEntity<Employee>(HttpStatus.NOT_FOUND);
         }
     }
 
-
+   /* @PutMapping("/update")
+    public Employee updateEmployee(@RequestBody Employee employee) {
+        return EmployeeService.updateEmployee(employee);
+    }
+*/
 }
