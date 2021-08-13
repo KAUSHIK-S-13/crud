@@ -23,7 +23,21 @@ public class EmployeeService {
         employeeRepository.save(employee);
     }
 
-    public Employee get(Integer id) {
-        return employeeRepository.findById(id).get();
+    public Employee getEmployeeById(int id) {
+        return employeeRepository.findById(id).orElse(null);
     }
+
+    public String deleteEmplopyee(int id) {
+        employeeRepository.deleteById(id);
+        return "Employee removed !! " + id;
+    }
+
+   /* public static Employee updateEmployee(Employee employee) {
+        Employee existingEmployee = EmployeeRepository.findById(employee.getId()).orElse(null);
+        existingEmployee.setLocation(employee.getLocation());
+        existingEmployee.setName(employee.getName());
+
+        return EmployeeRepository.save(existingEmployee);
+    } */
+
 }
