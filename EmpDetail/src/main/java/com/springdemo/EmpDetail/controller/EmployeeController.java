@@ -26,7 +26,7 @@ public class EmployeeController {
    @PostMapping("/addemployee")
    public BaseResponse display(@RequestBody EmployeeDTO employeeDTO)
    { 
-       return obj.adddetail(employeeDTO);
+       return obj.addetail(employeeDTO);
    }
 
 
@@ -45,6 +45,9 @@ public class EmployeeController {
         return obj.updatedetail(employeeDTO);
     }
 
-
+    @DeleteMapping("/deletall")
+    public BaseResponse deleted( ){
+        return obj.deleted();
+    }
 
 }

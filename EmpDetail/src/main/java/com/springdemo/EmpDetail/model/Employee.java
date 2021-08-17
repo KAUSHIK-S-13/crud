@@ -1,11 +1,8 @@
 package com.springdemo.EmpDetail.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
-
+@Table(name = "")
 @Entity
 public class Employee {
 
